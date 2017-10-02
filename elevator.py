@@ -43,6 +43,7 @@ class ElevatorLogic(object):
         with_sort = True
         ignored = False
         all_requests = self.requests[UP] + self.requests[DOWN]
+        reverse = direction == DOWN
 
         if len(self.requests[direction]) > 0:
             last_destination = self.requests[direction][-1]
@@ -54,14 +55,20 @@ class ElevatorLogic(object):
             floors_are_consecutive = self.floors_are_consecutive(last_destination['floor'], self.callbacks.current_floor, floor)
             if last_destination['type'] == CALL and floors_are_consecutive == True:
                 with_sort = False
+        elif len(self.requests[direction]) == 0:
+            if len(self.breadcrumbs) > 0:
+                prev_destination = self.breadcrumbs[-1]
+                if prev_destination['floor'] == floor:
+                    ignored = True
 
-        self.requests[direction].append({'floor': floor, 'type': CALL, 'direction': direction})
+        if ignored == False:
+            self.requests[direction].append({'floor': floor, 'type': CALL, 'direction': direction})
 
-        if with_sort == True:
-            self.requests[direction].sort(key=lambda x: x['floor'], reverse=direction == DOWN)
+            if with_sort == True:
+                self.requests[direction].sort(key=lambda x: x['floor'], reverse=reverse)
 
-        #print 'Direction:', direction, ' Destination:', floor, ' Current state: ', self.requests, 'With Sort:', with_sort, ', ignored ', ignored
-        #print 'on Called', self.requests
+            #print 'Current floor', self.callbacks.current_floor,'Direction:', direction, ' Destination:', floor, ' Current state: ', self.requests, 'With Sort:', with_sort, ', ignored ', ignored
+            #print 'on Called', self.requests
 
     def on_floor_selected(self, floor):
         """
@@ -71,7 +78,7 @@ class ElevatorLogic(object):
 
         floor: the floor that was requested
         """
-        direction = UP # By default the elevator starts in UP
+        direction = UP
         ignored = False
         all_requests = self.requests[UP] + self.requests[DOWN]
 
@@ -87,16 +94,13 @@ class ElevatorLogic(object):
             last_destination = self.requests[direction][-1]
             floors_are_consecutive = self.floors_are_consecutive(last_destination['floor'], self.callbacks.current_floor, floor)
 
-            if direction == UP and floor <= self.callbacks.current_floor:
+            if last_destination['type'] == SELECT and floors_are_consecutive == True:
+                ignored = True
+            elif direction == UP and floor <= self.callbacks.current_floor:
                 ignored = True
             elif direction == DOWN and floor >= self.callbacks.current_floor:
                 ignored = True
-            elif last_destination['type'] == SELECT and floors_are_consecutive == True:
-                ignored = True
-        # elif len(self.requests[direction]) == 0 and len(self.breadcrumbs) > 0:
-        #     if len(all_requests) > 0:
-        #         ignored = True
-        elif direction == UP and floor <= self.callbacks.current_floor:
+        elif len(self.breadcrumbs) > 0 and direction == UP and floor <= self.callbacks.current_floor:
             ignored = True
         elif direction == DOWN and floor >= self.callbacks.current_floor:
             ignored = True

@@ -181,271 +181,271 @@ e.run_until_stopped()  # service e.select_floor(5)
 e.run_until_stopped()  # service e.call(2, UP)
 # 4... 3... 2...
 
-# print ''
-# print 'More examples'
-# e = Elevator(ElevatorLogic())
-# #    1...
-# e.call(5, UP)
-# e.run_until_stopped()
-# #    2... 3... 4... 5...
-# e.run_until_stopped()
-# e.run_until_stopped()
+print ''
+print 'More examples'
+e = Elevator(ElevatorLogic())
+#    1...
+e.call(5, UP)
+e.run_until_stopped()
+#    2... 3... 4... 5...
+e.run_until_stopped()
+e.run_until_stopped()
 
-# print ''
-# print 'More examples 2'
-# e = Elevator(ElevatorLogic())
-# # 1...
-# e.call(3, UP)
-# e.call(5, UP)
-# e.run_until_stopped()
-# # 2... 3...
-# e.run_until_stopped()
-# # 4... 5...
+print ''
+print 'More examples 2'
+e = Elevator(ElevatorLogic())
+# 1...
+e.call(3, UP)
+e.call(5, UP)
+e.run_until_stopped()
+# 2... 3...
+e.run_until_stopped()
+# 4... 5...
 
-# print ''
-# print 'More examples 3'
-# e = Elevator(ElevatorLogic())
-# # 1...
-# e.call(5, UP)
-# e.call(3, UP)
-# e.run_until_stopped()
-# # 2... 3...
-# e.run_until_stopped()
-# # 4... 5...
-
-
-# print ''
-# print 'More examples 4'
-# e = Elevator(ElevatorLogic())
-# # 1...
-# e.call(3, DOWN)
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# # 2... 3... 4... 5...
-# e.run_until_stopped()
-# # 4... 3...
-
-# print ''
-# print 'More examples 5'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(3, UP)
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# #2... 3...
-# e.run_until_stopped()
-# #4... 5...
-
-# print ''
-# print 'More examples 6'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(3, DOWN)
-# e.call(5, UP)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.run_until_stopped()
-# #4... 3...
+print ''
+print 'More examples 3'
+e = Elevator(ElevatorLogic())
+# 1...
+e.call(5, UP)
+e.call(3, UP)
+e.run_until_stopped()
+# 2... 3...
+e.run_until_stopped()
+# 4... 5...
 
 
-# print ''
-# print 'More examples 7'
-# e = Elevator(ElevatorLogic(), 3)
-# #3...
-# e.call(2, UP)
-# e.call(4, UP)
-# e.run_until_stopped()
-# #2...
-# e.run_until_stopped()
-# #3... 4...
+print ''
+print 'More examples 4'
+e = Elevator(ElevatorLogic())
+# 1...
+e.call(3, DOWN)
+e.call(5, DOWN)
+e.run_until_stopped()
+# 2... 3... 4... 5...
+e.run_until_stopped()
+# 4... 3...
+
+print ''
+print 'More examples 5'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(3, UP)
+e.call(5, DOWN)
+e.run_until_stopped()
+#2... 3...
+e.run_until_stopped()
+#4... 5...
+
+print ''
+print 'More examples 6'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(3, DOWN)
+e.call(5, UP)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.run_until_stopped()
+#4... 3...
 
 
-# print ''
-# print 'More examples 8'
-# e = Elevator(ElevatorLogic(), 3)
-# #3...
-# e.call(4, UP)
-# e.call(2, UP)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
-# #3... 2...
-
-# print ''
-# print 'More examples 9'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(5, UP)
-# e.run_until_floor(2)
-# #2...
-# e.call(3, UP)
-# e.run_until_stopped()
-# #3...
-# e.run_until_stopped()
-# #4... 5...
-
-# print ''
-# print 'More examples 10'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(5, UP)
-# e.run_until_floor(3)
-# #2... 3...
-# e.call(3, UP)
-# e.run_until_stopped()
-# #4... 5...
-# e.run_until_stopped()
-# #4... 3...
+print ''
+print 'More examples 7'
+e = Elevator(ElevatorLogic(), 3)
+#3...
+e.call(2, UP)
+e.call(4, UP)
+e.run_until_stopped()
+#2...
+e.run_until_stopped()
+#3... 4...
 
 
-# print ''
-# print 'More examples 11'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.select_floor(3)
-# e.select_floor(5)
-# e.run_until_stopped()
-# #2... 3...
-# e.run_until_stopped()
-# #4... 5...
+print ''
+print 'More examples 8'
+e = Elevator(ElevatorLogic(), 3)
+#3...
+e.call(4, UP)
+e.call(2, UP)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
+#3... 2...
 
-# print ''
-# print 'More examples 12'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.select_floor(5)
-# e.select_floor(3)
-# e.run_until_stopped()
-# #2... 3...
-# e.run_until_stopped()
-# #4... 5...
+print ''
+print 'More examples 9'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(5, UP)
+e.run_until_floor(2)
+#2...
+e.call(3, UP)
+e.run_until_stopped()
+#3...
+e.run_until_stopped()
+#4... 5...
 
-# print ''
-# print 'More examples 13'
-# e = Elevator(ElevatorLogic(), 3)
-# #3...
-# e.select_floor(2)
-# e.select_floor(4)
-# e.run_until_stopped()
-# #2...
-# e.run_until_stopped()
+print ''
+print 'More examples 10'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(5, UP)
+e.run_until_floor(3)
+#2... 3...
+e.call(3, UP)
+e.run_until_stopped()
+#4... 5...
+e.run_until_stopped()
+#4... 3...
 
-# print ''
-# print 'More examples 14'
-# e = Elevator(ElevatorLogic(), 3)
-# #3...
-# e.select_floor(4)
-# e.select_floor(2)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
+
+print ''
+print 'More examples 11'
+e = Elevator(ElevatorLogic())
+#1...
+e.select_floor(3)
+e.select_floor(5)
+e.run_until_stopped()
+#2... 3...
+e.run_until_stopped()
+#4... 5...
+
+print ''
+print 'More examples 12'
+e = Elevator(ElevatorLogic())
+#1...
+e.select_floor(5)
+e.select_floor(3)
+e.run_until_stopped()
+#2... 3...
+e.run_until_stopped()
+#4... 5...
+
+print ''
+print 'More examples 13'
+e = Elevator(ElevatorLogic(), 3)
+#3...
+e.select_floor(2)
+e.select_floor(4)
+e.run_until_stopped()
+#2...
+e.run_until_stopped()
+
+print ''
+print 'More examples 14'
+e = Elevator(ElevatorLogic(), 3)
+#3...
+e.select_floor(4)
+e.select_floor(2)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
 
 # # If the elevator is called to a floor going up, it should ignore a request to go down.
-# print ''
-# print 'More examples 15'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(5, UP)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.select_floor(6)
-# e.select_floor(4)
-# e.run_until_stopped()
-# #6...
-# e.run_until_stopped()
+print ''
+print 'More examples 15'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(5, UP)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.select_floor(6)
+e.select_floor(4)
+e.run_until_stopped()
+#6...
+e.run_until_stopped()
 
-# # Like above, but going in other direction.
-# print ''
-# print 'More examples 16'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.select_floor(6)
-# e.select_floor(4)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
-
-
-# print ''
-# print 'More examples 17'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(5, DOWN)
-# e.select_floor(5)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.select_floor(4)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
+# Like above, but going in other direction.
+print ''
+print 'More examples 16'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(5, DOWN)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.select_floor(6)
+e.select_floor(4)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
 
 
-# print ''
-# print 'More examples 18'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(3, UP)
-# e.run_until_stopped()
-# #2... 3...
-# e.call(3, UP)
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# #4... 5...
-# e.run_until_stopped()
+print ''
+print 'More examples 17'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(5, DOWN)
+e.select_floor(5)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.select_floor(4)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
+
+# Similarly, if the elevator is called at a floor where it is stopped, it should not go back later.
+print ''
+print 'More examples 18'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(3, UP)
+e.run_until_stopped()
+#2... 3...
+e.call(3, UP)
+e.call(5, DOWN)
+e.run_until_stopped()
+#4... 5...
+e.run_until_stopped()
 
 
-# print ''
-# print 'More examples 19'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.call(2, DOWN)
-# e.call(4, UP)
-# e.run_until_stopped()
-# #2... 3... 4...
-# e.call(5, DOWN)  # It's not too late.
-# e.run_until_stopped()
-# #5...
-# e.run_until_stopped()
-# #4... 3... 2...
+print ''
+print 'More examples 19'
+e = Elevator(ElevatorLogic())
+#1...
+e.call(2, DOWN)
+e.call(4, UP)
+e.run_until_stopped()
+#2... 3... 4...
+e.call(5, DOWN)  # It's not too late.
+e.run_until_stopped()
+#5...
+e.run_until_stopped()
+#4... 3... 2...
 
-# # When changing directions, wait one step to clear current direction.
-# print ''
-# print 'More examples 20'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.select_floor(5)
-# e.call(5, UP)
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.select_floor(4)  # ignored
-# e.run_until_stopped()
-# e.select_floor(6)  # ignored
-# e.select_floor(4)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
+# When changing directions, wait one step to clear current direction.
+print ''
+print 'More examples 20'
+e = Elevator(ElevatorLogic())
+#1...
+e.select_floor(5)
+e.call(5, UP)
+e.call(5, DOWN)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.select_floor(4)  # ignored
+e.run_until_stopped()
+e.select_floor(6)  # ignored
+e.select_floor(4)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
 
 
-# print ''
-# print 'More examples 21'
-# e = Elevator(ElevatorLogic(), 6)
-# #6...
-# e.select_floor(2)
-# e.call(2, UP)
-# e.call(2, DOWN)
-# e.run_until_stopped()
-# #5... 4... 3... 2...
-# e.select_floor(3)  # ignored
-# e.run_until_stopped()
-# e.select_floor(1)  # ignored
-# e.select_floor(3)
-# e.run_until_stopped()
-# #3...
-# e.run_until_stopped()
+print ''
+print 'More examples 21'
+e = Elevator(ElevatorLogic(), 6)
+#6...
+e.select_floor(2)
+e.call(2, UP)
+e.call(2, DOWN)
+e.run_until_stopped()
+#5... 4... 3... 2...
+e.select_floor(3)  # ignored
+e.run_until_stopped()
+e.select_floor(1)  # ignored
+e.select_floor(3)
+e.run_until_stopped()
+#3...
+e.run_until_stopped()
 
 
 # print ''
