@@ -182,6 +182,21 @@ e.run_until_stopped()  # service e.call(2, UP)
 # 4... 3... 2...
 
 print ''
+print 'Fuzz testing'
+import random
+e = Elevator(ElevatorLogic())
+#    1...
+try: print '-',  # doctest:+ELLIPSIS
+finally:
+    for i in range(100000):
+        r = random.randrange(6)
+        if r == 0: e.call(
+            random.randrange(FLOOR_COUNT) + 1,
+            random.choice((UP, DOWN)))
+        elif r == 1: e.select_floor(random.randrange(FLOOR_COUNT) + 1)
+        else: e.step()
+
+print ''
 print 'More examples'
 e = Elevator(ElevatorLogic())
 #    1...
@@ -448,7 +463,7 @@ e.run_until_stopped()
 e.run_until_stopped()
 
 
-# print ''
+print ''
 # print 'More examples 22'
 # e = Elevator(ElevatorLogic())
 # #1...

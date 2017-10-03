@@ -55,6 +55,7 @@ class ElevatorLogic(object):
             floors_are_consecutive = self.floors_are_consecutive(last_destination['floor'], self.callbacks.current_floor, floor)
             if last_destination['type'] == CALL and floors_are_consecutive == True:
                 with_sort = False
+
         elif len(self.requests[direction]) == 0:
             if len(self.breadcrumbs) > 0:
                 prev_destination = self.breadcrumbs[-1]
@@ -67,8 +68,8 @@ class ElevatorLogic(object):
             if with_sort == True:
                 self.requests[direction].sort(key=lambda x: x['floor'], reverse=reverse)
 
-            #print 'Current floor', self.callbacks.current_floor,'Direction:', direction, ' Destination:', floor, ' Current state: ', self.requests, 'With Sort:', with_sort, ', ignored ', ignored
-            #print 'on Called', self.requests
+        #print 'Current floor', self.callbacks.current_floor,'Direction:', direction, ' Destination:', floor, ' Current state: ', self.requests, 'With Sort:', with_sort, ', ignored ', ignored
+        #print 'on Called', self.requests
 
     def on_floor_selected(self, floor):
         """
@@ -78,6 +79,10 @@ class ElevatorLogic(object):
 
         floor: the floor that was requested
         """
+
+        if not (floor >= 1 or floor <= FLOOR_COUNT):
+            return
+
         direction = UP
         ignored = False
         all_requests = self.requests[UP] + self.requests[DOWN]
@@ -105,14 +110,15 @@ class ElevatorLogic(object):
         elif direction == DOWN and floor >= self.callbacks.current_floor:
             ignored = True
         elif len(all_requests) > 0:
-             ignored = True if all_requests[-1]['floor'] == floor else False
+            ignored = True if all_requests[-1]['floor'] == floor else False
 
         #print 'Current floor', self.callbacks.current_floor,' Direction:', direction, ' Destination:', floor, ' Current state: ', self.requests, 'Ignored:', ignored
 
         if ignored == False:
             self.requests[direction].append({ 'floor' : floor, 'type' : SELECT, 'direction': direction })
             self.requests[direction].sort(key=lambda x: x['floor'], reverse=direction == DOWN)
-            #print 'on Selected', self.requests
+
+        #print 'on Selected', self.requests
 
     def on_floor_changed(self):
         """
@@ -123,6 +129,9 @@ class ElevatorLogic(object):
         direction = self.callbacks.motor_direction
 
         all_requests = self.requests[UP] + self.requests[DOWN]
+
+        if direction == DOWN:
+            all_requests = self.requests[DOWN] + self.requests[UP]
 
         if len(all_requests) > 0:
             floor = all_requests[0]['floor']
@@ -139,6 +148,12 @@ class ElevatorLogic(object):
         else:
             opened = False
 
+        if self.callbacks.current_floor <= 1 and self.callbacks.motor_direction == DOWN:
+            self.callbacks.motor_direction = None
+
+        if self.callbacks.motor_direction == UP and self.callbacks.current_floor == FLOOR_COUNT:
+            self.callbacks.motor_direction = DOWN
+
         self.breadcrumbs.append({ 'direction': direction, 'floor': self.callbacks.current_floor, 'opened': opened,  })
 
     def on_ready(self):
@@ -151,7 +166,10 @@ class ElevatorLogic(object):
 
         if len(requests) > 0:
             next_destination = requests[0]['floor']
-            if next_destination > self.callbacks.current_floor:
+
+            if not (next_destination >= 1 or next_destination <= FLOOR_COUNT):
+                self.callbacks.motor_direction = None
+            elif next_destination > self.callbacks.current_floor:
                 self.callbacks.motor_direction = UP
             elif next_destination < self.callbacks.current_floor:
                 self.callbacks.motor_direction = DOWN
@@ -161,4 +179,10 @@ class ElevatorLogic(object):
             self.change_direction = False
         else:
             self.change_direction = True
+
+        if self.callbacks.motor_direction == DOWN and self.callbacks.current_floor == 1:
+            self.callbacks.motor_direction = None
+
+        if self.callbacks.motor_direction == UP and self.callbacks.current_floor == FLOOR_COUNT:
+            self.callbacks.motor_direction = None
             #print 'ready...%s %s %s' % (self.callbacks.current_floor, destination_floor, self.callbacks.motor_direction)
