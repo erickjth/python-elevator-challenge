@@ -464,21 +464,21 @@ e.run_until_stopped()
 
 
 print ''
-# print 'More examples 22'
-# e = Elevator(ElevatorLogic())
-# #1...
-# e.select_floor(5)
-# e.call(5, UP)
-# e.call(5, DOWN)
-# e.run_until_stopped()
-# #2... 3... 4... 5...
-# e.select_floor(6)
-# e.run_until_stopped()
-# #6...
-# e.run_until_stopped()
-# #5...
-# e.select_floor(6)  # ignored
-# e.select_floor(4)
-# e.run_until_stopped()
-# #4...
-# e.run_until_stopped()
+print 'More examples 22'
+e = Elevator(ElevatorLogic())
+#1...
+e.select_floor(5)
+e.call(5, UP)
+e.call(5, DOWN)
+e.run_until_stopped()
+#2... 3... 4... 5...
+e.select_floor(6)
+e.run_until_stopped()
+#6...
+e.run_until_stopped()
+#5...
+e.select_floor(6)  # ignored
+e.select_floor(4)
+e.run_until_stopped()
+#4...
+e.run_until_stopped()
